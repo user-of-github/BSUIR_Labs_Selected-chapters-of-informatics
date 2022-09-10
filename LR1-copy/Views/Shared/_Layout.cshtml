@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - LR1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/lib/fonawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/LR1.styles.css" asp-append-version="true"/>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid" style="align-items: center;">
+                <a class="navbar-brand nav-brand-header" href="#">Web labs</a>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link nav-link-header active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link nav-link-header" href="#">Lab 1</a>
+                        <a class="nav-link nav-link-header" href="#">Catalog</a>
+                        <a class="nav-link nav-link-header" href="#">Admin panel</a>
+                    </div>
+                </div>
+
+                <div class="d-flex" role="search" style="align-items: center;">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span style="margin-right: 20px; margin-left: 5px;">0</span>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <img src="images/user.png" alt="Profile logo" width="16px">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-user-info">
+                                <span>user@mail.com</span>
+                                <img src="images/user.png" alt="Profile logo" width="16px">
+                            </li>
+                            <li><a class="dropdown-item" href="#">My goods</a></li>
+                            <li><a class="dropdown-item" href="#">Log out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<main class="main">
+    @RenderBody()
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="d-flex footer-links">
+            <a href="https://facebook.com" target="new"> <i class="fa-brands fa-facebook fa-2xl footer-icons"></i></a>
+            <a href="https://vk.com" target="new"> <i class="fa-brands fa-vk fa-2xl footer-icons"></i></a>
+            <a href="https://twitter.com" target="new"> <i class="fa-brands fa-twitter fa-2xl footer-icons"></i></a>
+        </div>
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
