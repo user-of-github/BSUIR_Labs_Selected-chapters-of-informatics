@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace LR.Controllers;
 
+
 [Controller]
 public class HomeController : Controller
 {
@@ -21,9 +22,9 @@ public class HomeController : Controller
     {
         this._listDemo = new List<ListDemo>
         {
-            new ListDemo {ListItemValue = 1, ListItemText = "Item 1"},
-            new ListDemo {ListItemValue = 2, ListItemText = "Item 2"},
-            new ListDemo {ListItemValue = 3, ListItemText = "Item 3"}
+            new ListDemo {ListItemValue = 1, ListItemText = "Item 1 (first)"},
+            new ListDemo {ListItemValue = 2, ListItemText = "Item 2 (second)"},
+            new ListDemo {ListItemValue = 3, ListItemText = "Item 3 (third)"}
         };
 
         this._logger = logger;
@@ -31,9 +32,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        ViewData["Text"] = "Laboratory work № 2";
-        ViewData["Lst"] = new SelectList(_listDemo, "ListItemValue", "ListItemText");
+        ViewData["List"] = new SelectList(_listDemo, "ListItemValue", "ListItemText");
+        ViewBag.Text = "Laboratory work № 2";
 
         return View();
     }
 }
+
