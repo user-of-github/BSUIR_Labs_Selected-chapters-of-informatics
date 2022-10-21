@@ -17,6 +17,12 @@ namespace LR.Components
 
         public IViewComponentResult Invoke()
         {
+            this.Check();
+            return View(this._menuItems);
+        }
+
+        private void Check()
+        {
             var controller = ViewContext.RouteData.Values["controller"]?.ToString();
             var area = ViewContext.RouteData.Values["area"]?.ToString();
 
@@ -27,8 +33,6 @@ namespace LR.Components
 
                 if (controllerMatch || areaMatch) menuItem.Active = "ACTIVE";
             }
-
-            return View(this._menuItems);
         }
     }
 }
