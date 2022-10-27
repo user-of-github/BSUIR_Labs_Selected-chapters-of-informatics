@@ -1,9 +1,10 @@
-﻿namespace LR.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+
+namespace LR.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = ""; // имя пользователя
-        public int Age { get; set; } // возраст пользователя
+        public byte[]? Avatar { get; set; }
     }
 }
