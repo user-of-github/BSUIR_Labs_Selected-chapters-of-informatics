@@ -31,10 +31,13 @@ namespace LR.Controllers
             this._logger = logger;
         }
         
+        [Route("")]
+        [Route("/")]
+        [Route("~/", Name = "default")]
         public IActionResult Index()
         {
             ViewData["List"] = new SelectList(_listDemo, "ListItemValue", "ListItemText");
-            ViewBag.Text = "Laboratory work № 2-3";
+            ViewBag.Text = "Laboratory work № 2";
 
             return View();
         }
