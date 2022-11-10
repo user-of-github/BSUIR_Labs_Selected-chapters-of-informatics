@@ -9,8 +9,8 @@ namespace LR.Entities
   [Table("dbo.AspNetUsers")]
   public class ApplicationUser : IdentityUser
   { 
-    public byte[]? Image { get; set; } = null;
-    public string? ContentType { get; set; } = null;
+    public byte[]? Image { get; set; }
+    public string? ContentType { get; set; }
 
     public void InitializeArray(int length) => this.Image = new byte[length];
   }
