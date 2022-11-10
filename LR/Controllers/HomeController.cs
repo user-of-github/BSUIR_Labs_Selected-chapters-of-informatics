@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 
 namespace LR.Controllers
-{
-    
-    
+{ 
     public class HomeController : Controller
     {
         public class ListDemo
