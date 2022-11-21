@@ -1,0 +1,50 @@
+@using LR.Entities
+@model IEnumerable<LR.Entities.Movie>
+
+
+@{
+	ViewData["Title"] = "View";
+	var categories = ViewData["Categories"] as IEnumerable<Category>;
+	int currentGroup = (int)ViewData["CurrentCategory"];
+	var text = currentGroup != 0
+		? categories
+		.FirstOrDefault(g => g.Id == currentGroup)?
+		.Title
+		: "All";
+}
+
+<h1>View</h1>
+
+<p>
+	<a asp-action="Create">Create New</a>
+</p>
+<div class="container">
+	<div class="card-deck row">
+		<div class="col-2">
+			<div class="dropdown">
+				<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					@text
+				</a>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					@foreach (var cat in @categories)
+					{
+						@if (!(cat.Title == text))
+						{
+							<a class="dropdown-item" href="?group=@cat.Id">@cat.Title</a>
+						}
+					}
+					@if (text != "All")
+					{
+						<a class="dropdown-item" asp-action="Index" asp-controller="Movie">All</a>
+					}
+				</div>
+			</div>
+
+		</div>
+
+		@foreach (var item in Model)
+		{
+			<partial name="_ListItemPartial" model="@item" />
+		}
+	</div>
+</div>

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using LR.Models;
+﻿using LR.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -11,7 +10,7 @@ namespace LR.Components
         private readonly List<MenuItem> _menuItems = new()
         {
             new MenuItem {Controller = "Home", Action = "Index", Text = "Lab 2", IsPage = true},
-            new MenuItem {Controller = "Product", Action = "Index", Text = "Catalog"},
+            new MenuItem {Controller = "Movie", Action = "Index", Text = "Catalog"},
             new MenuItem {Area = "Admin", Page = "/Index", Text = "Administrating"}
         };
 

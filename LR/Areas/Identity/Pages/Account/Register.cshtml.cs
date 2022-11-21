@@ -37,14 +37,12 @@ namespace LR.Areas.Identity.Pages.Account
         IUserStore<ApplicationUser> userStore,
         SignInManager<ApplicationUser> signInManager,
         ILogger<RegisterModel> logger)
-    //IEmailSender emailSender)
     {
       _userManager = userManager;
       _userStore = userStore;
       _emailStore = GetEmailStore();
       _signInManager = signInManager;
       _logger = logger;
-      //_emailSender = emailSender;
     }
 
     /// <summary>
@@ -122,9 +120,8 @@ namespace LR.Areas.Identity.Pages.Account
         await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
         await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 
-       
-        Console.WriteLine(Input.Image == null);
-        Console.WriteLine("!!!!!!");
+        //Console.WriteLine(Input.Image == null);
+        //Console.WriteLine("!!!!!!");
         if (Input.Image != null && Input.Image.Length != 0)
         {
           user.InitializeArray((int)(Input.Image).Length);

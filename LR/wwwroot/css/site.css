@@ -112,3 +112,16 @@ hr {
 .form-floating {
   margin: 10px 0;
 }
+
+
+.helloname {
+  font-weight: 900;
+  font-size: 18px;
+  display: block;
+  padding: 5px 10px;
+  background-color: white;
+  color: var(--accent-main);
+  margin-right: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
