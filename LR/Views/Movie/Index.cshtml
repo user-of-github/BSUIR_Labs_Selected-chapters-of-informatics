@@ -55,7 +55,7 @@
 	<div class="row mt-5">
 		@foreach (var item in Model)
 		{
-			<div class="col-lg-3 col-md-3 col-sm-2 col-xs-2" style="margin-bottom:15px;">
+			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6" style="margin-bottom:15px;">
 				<partial name="_ListItemPartial" model="@item" />
 			</div>
 		}
@@ -66,13 +66,13 @@
 			<ul class="pagination justify-content-center">
 				@for (var page = 0; page < pageTotal; ++page)
 				{
-					<pager action="Index" 
-						controller="Movie" 
-						group-id="@currentGroup" 
-						page-total="@pageTotal"
+					<pager action="Index"
+					   controller="Movie"
+					   group-id="@currentGroup"
+					   page-total="@pageTotal"
 					   page-current="@(page + 1)">
-					   @(page + 1)
-				   </pager>
+						@(page + 1)
+					</pager>
 				}
 
 			</ul>

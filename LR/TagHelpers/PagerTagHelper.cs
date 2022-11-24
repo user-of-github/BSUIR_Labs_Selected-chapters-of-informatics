@@ -45,7 +45,9 @@ namespace LR.TagHelper
       else
         output.Attributes.SetAttribute("class", "page-item");
 
-      string listContent = $"<a class=\"page-link\" href=\"/Catalog/Page_{this.CurrentPage}\">{this.CurrentPage}</a>";
+      string listContent = this.GroupId != 0 && this.GroupId != 0
+        ? $"<a class=\"page-link\" href=\"/Catalog/Page_{this.CurrentPage}?group={this.GroupId}\">{this.CurrentPage}</a>"
+        : $"<a class=\"page-link\" href=\"/Catalog/Page_{this.CurrentPage}\">{this.CurrentPage}</a>";
       output.Content.SetHtmlContent(listContent);
     }
   }

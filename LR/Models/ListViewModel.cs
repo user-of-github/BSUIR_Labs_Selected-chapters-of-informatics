@@ -7,7 +7,7 @@ namespace LR.Models
   {
     public static int TotalPages { get; set; }
     public static int CurrentPage { get; set; }
-    public static int AmountPerPage { get; set; } = 3;
+    public static int AmountPerPage { get; set; } = 4;
     public static int GroupId { get; set; }
 
     public ListViewModel() { }
