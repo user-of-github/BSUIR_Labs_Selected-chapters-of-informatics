@@ -17,7 +17,6 @@ html {
 
 body {
   width: 100%;
-  min-height: 100vh;
 }
 
 .header {
@@ -42,9 +41,9 @@ body {
   background-color: #192a56;
   color: var(--secondary);
   width: 100%;
-  min-height: 50px;
   display: flex;
   align-items: center;
+  padding: 30px 0;
 }
 
 .main {

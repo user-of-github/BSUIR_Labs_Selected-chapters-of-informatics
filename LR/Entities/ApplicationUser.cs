@@ -77,8 +77,10 @@ namespace LR.Entities
         context.Movies.AddRange(
           new Movie { Category = sequels, Title = "Black panther 2", Description = "Shuri becomes Black Panther", Duration = 150, ImagePath = "images/bp2.webp" },
           new Movie { Category = crossovers, Title = "Avengers: EndGame", Description = "The film which had almost 3 billion $ box office", Duration = 170, ImagePath = "images/a4.webp" },
-          new Movie { Category = solo, Title = "Crown", Description = "no description", Duration = 0, ImagePath = "images/icon.png" }
-          
+          new Movie { Category = solo, Title = "Crown", Description = "no description", Duration = 0, ImagePath = "images/icon.png" },
+          new Movie { Category = sequels, Title = "Ant Man 3: Quantumania", Description = "Kang is excellent", Duration = 120, ImagePath = "images/am3.jpg" },
+          new Movie { Category = crossovers, Title = "Avengers 5: Kang's dynasty", Description="Kang !!!", Duration = 170, ImagePath="images/a3.jpg"}
+
         );
         context.SaveChanges();
       }

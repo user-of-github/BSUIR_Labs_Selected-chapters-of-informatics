@@ -1,24 +1,33 @@
 @using LR.Entities
+@using LR.Models
 @model IEnumerable<LR.Entities.Movie>
 
 
 @{
 	ViewData["Title"] = "View";
 	var categories = ViewData["Categories"] as IEnumerable<Category>;
-	int currentGroup = (int)ViewData["CurrentCategory"];
+	//Console.WriteLine("Vuew" + ViewData["CurrentCategory"]);
+	var currentGroup = (int)ViewData["CurrentCategory"];
 	var text = currentGroup != 0
-		? categories
-		.FirstOrDefault(g => g.Id == currentGroup)?
-		.Title
+		? categories.FirstOrDefault(g => g.Id == currentGroup)?.Title
 		: "All";
+
+	var pageTotal = ListViewModel<Movie>.TotalPages;
+	var currentPage = ListViewModel<Movie>.CurrentPage;
+
+	var request = ViewContext.HttpContext.Request;
+	var returnUrl = request.Path + request.QueryString.ToUriComponent();
+	var domain = request.Host;
 }
 
-<h1>View</h1>
 
-<p>
-	<a asp-action="Create">Create New</a>
-</p>
 <div class="container">
+	<div class="row">
+		<h1>View</h1>
+	</div>
+	<div class="row mt-3 mb-5">
+		<a asp-action="Create" class="btn btn-outline-primary" style=" width: auto; margin-right: auto;">Create New</a>
+	</div>
 	<div class="card-deck row">
 		<div class="col-2">
 			<div class="dropdown">
@@ -41,10 +50,33 @@
 			</div>
 
 		</div>
+	</div>
 
+	<div class="row mt-5">
 		@foreach (var item in Model)
 		{
-			<partial name="_ListItemPartial" model="@item" />
+			<div class="col-lg-3 col-md-3 col-sm-2 col-xs-2" style="margin-bottom:15px;">
+				<partial name="_ListItemPartial" model="@item" />
+			</div>
 		}
 	</div>
+
+	<div class="row mt-6">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				@for (var page = 0; page < pageTotal; ++page)
+				{
+					<pager action="Index" 
+						controller="Movie" 
+						group-id="@currentGroup" 
+						page-total="@pageTotal"
+					   page-current="@(page + 1)">
+					   @(page + 1)
+				   </pager>
+				}
+
+			</ul>
+		</nav>
+	</div>
 </div>
+
