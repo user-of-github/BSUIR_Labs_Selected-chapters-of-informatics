@@ -1,6 +1,8 @@
 ﻿using Microsoft.Build.Framework;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using RequiredAttribute = System.ComponentModel.DataAnnotations.RequiredAttribute;
+
 
 namespace LR.Entities
 {
@@ -19,6 +21,10 @@ namespace LR.Entities
 
     [Required]
     public int Duration { get; set; }
+
+    [Display(Name = "Avatar")]
+    [NotMapped]
+    public IFormFile Image { get; set; }
 
     public string? ImagePath { get; set; }
 

@@ -4,7 +4,7 @@
 
 
 @{
-	ViewData["Title"] = "View";
+	ViewData["Title"] = "Movies List:";
 	var categories = ViewData["Categories"] as IEnumerable<Category>;
 	//Console.WriteLine("Vuew" + ViewData["CurrentCategory"]);
 	var currentGroup = (int)ViewData["CurrentCategory"];
@@ -23,10 +23,10 @@
 
 <div class="container">
 	<div class="row">
-		<h1>View</h1>
+		<h1>Movies List</h1>
 	</div>
 	<div class="row mt-3 mb-5">
-		<a asp-action="Create" class="btn btn-outline-primary" style=" width: auto; margin-right: auto;">Create New</a>
+		<a asp-controller="Admin" asp-action="Create" class="btn btn-outline-primary" style=" width: auto; margin-right: auto;">Create New</a>
 	</div>
 	<div class="card-deck row">
 		<div class="col-2">

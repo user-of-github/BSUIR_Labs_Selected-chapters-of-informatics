@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  transition: 0.2s all;
+  transition: 0.2s all !important;
   --accent-main: #192a56;
   --secondary: #f5f6fa;
 }
@@ -104,7 +104,8 @@ hr {
 
 
 .ACTIVE {
-  border-bottom: 2px solid white;
+  color: black !important;
+  background-color: white;
 }
 
 
@@ -124,3 +125,31 @@ hr {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
+
+.nav-item.nav-link {
+  padding: 5px 15px;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 20px;
+  color: white;
+  transition: 0.2s all;
+}
+
+  .nav-item.nav-link:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  .nav-item.nav-link:hover {
+    background-color: white;
+    color: black !important;
+  }
+
+  .nav-item.nav-link:active {
+    transform: scale(0.8);
+  }
+
+
+  .btn:active {
+    transform: scale(0.8);
+    transition: 0.2s all;
+  }

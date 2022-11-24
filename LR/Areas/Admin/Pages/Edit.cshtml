@@ -1,0 +1,57 @@
+@page
+@model LR.Areas.Admin.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <h1>Edit a movie</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Movie.Id" />
+                <div class="form-group">
+                    <label asp-for="Movie.Category" class="control-label"></label>
+                    <select asp-for="Movie.Category" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                    <span asp-validation-for="Movie.Category" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2">
+                    <label asp-for="Movie.Title" class="control-label"></label>
+                    <input asp-for="Movie.Title" class="form-control" />
+                    <span asp-validation-for="Movie.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2">
+                    <label asp-for="Movie.Description" class="control-label"></label>
+                    <input asp-for="Movie.Description" class="form-control" />
+                    <span asp-validation-for="Movie.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2">
+                    <label asp-for="Movie.Duration" class="control-label"></label>
+                    <input asp-for="Movie.Duration" class="form-control" />
+                    <span asp-validation-for="Movie.Duration" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2">
+                    <label asp-for="Movie.ImagePath" class="control-label"></label>
+                    <input asp-for="Movie.ImagePath" class="form-control" />
+                    <span asp-validation-for="Movie.ImagePath" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2">
+                    <label asp-for="Movie.MimeType" class="control-label"></label>
+                    <input asp-for="Movie.MimeType" class="form-control" />
+                    <span asp-validation-for="Movie.MimeType" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-5">
+                    <input style="width: 100%;" type="submit" value="Save" class="btn btn-outline-primary btn-lg" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <a asp-page="./Index">Back to List</a>
+    </div>
+</div>
