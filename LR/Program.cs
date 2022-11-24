@@ -1,8 +1,19 @@
+using LR;
 using LR.Data;
 using LR.Entities;
+using LR.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +49,19 @@ builder.Services.ConfigureApplicationCookie(options =>
   options.LogoutPath = $"/Identity/Account/Logout";
 });
 
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(opt =>
+{
+  opt.Cookie.HttpOnly = true;
+  opt.Cookie.IsEssential = true;
+});
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<Cart>(sp => CartService.GetCart(sp));
+
+
+
 
 var app = builder.Build();
 
@@ -60,6 +84,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseSession();
+
+app.UseMiddleware<LogMiddleware>();
 // initial values: admin and usual user
 DbInitializer.Initialize(app);
 

@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    var domain = ViewContext.HttpContext.Request.Host;
 }
 
 <div class="container">
@@ -41,27 +42,27 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Category.Id)
+                        @Html.DisplayFor(i => item.Category.Id)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Title)
+                        @Html.DisplayFor(t => item.Title)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Description)
+                        @Html.DisplayFor(t => item.Description)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Duration)
+                        @Html.DisplayFor(t => item.Duration)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ImagePath)
+                      <img src="https://@domain/@item.ImagePath" style="height:50px; width: 100%; object-fit: cover; border-radius: 5px;" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.MimeType)
                     </td>
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-outline-secondary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
+                        <a class="btn btn-outline-info" asp-page="./Details" asp-route-id="@item.Id">Details</a> 
+                        <a class="btn btn-outline-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>
             }

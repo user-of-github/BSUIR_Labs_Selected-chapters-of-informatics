@@ -34,9 +34,12 @@ namespace LR.Areas.Admin
 
     public async Task<IActionResult> OnPostAsync()
     {
+      Console.WriteLine("OnPostBEGIN");
       if (!ModelState.IsValid) return Page();
 
       this._context.Attach(this.Movie).State = EntityState.Modified;
+
+      Console.WriteLine("OnPostMIDDLE");
 
       try
       {

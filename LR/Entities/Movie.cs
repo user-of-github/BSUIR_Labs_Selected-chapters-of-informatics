@@ -24,7 +24,7 @@ namespace LR.Entities
 
     [Display(Name = "Avatar")]
     [NotMapped]
-    public IFormFile Image { get; set; }
+    public IFormFile? Image { get; set; }
 
     public string? ImagePath { get; set; }
 

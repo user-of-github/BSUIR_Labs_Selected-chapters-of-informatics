@@ -127,17 +127,21 @@ hr {
 }
 
 .nav-item.nav-link {
-  padding: 5px 15px;
+  padding: 3px 15px;
   border: 1px solid white;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 15px;
   color: white;
   transition: 0.2s all;
 }
 
-  .nav-item.nav-link:not(:last-child) {
-    margin-right: 15px;
-  }
+.nav-item:first-child {
+  margin-left: 30px;
+}
+
+.nav-item.nav-link:not(:last-child) {
+  margin-right: 15px;
+}
 
   .nav-item.nav-link:hover {
     background-color: white;

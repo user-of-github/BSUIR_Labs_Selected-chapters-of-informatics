@@ -1,0 +1,47 @@
+@model IEnumerable<LR.Models.CartItem>
+
+@{
+	ViewData["Title"] = "Cart";
+	var request = ViewContext.HttpContext.Request;
+	var returnUrl = request.Path + request.QueryString.ToUriComponent();
+	var domain = request.Host;
+}
+
+<div class="container">
+	<div class="row">  <h1>Cart</h1></div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Quantity)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Movie.Title)
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						<img src="https://@domain/@item.Movie.ImagePath" style="height:100px; object-fit: cover;" />
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Quantity)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Movie.Title)
+					</td>
+					<td>
+						<a asp-controller="Cart" asp-action="Delete" asp-route-id="@item.Movie.Id">
+							<i class="bi bi-trash fa-2x" style="color:red"></i>
+						</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
