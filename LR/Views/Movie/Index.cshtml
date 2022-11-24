@@ -52,13 +52,8 @@
 		</div>
 	</div>
 
-	<div class="row mt-5">
-		@foreach (var item in Model)
-		{
-			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6" style="margin-bottom:15px;">
-				<partial name="_ListItemPartial" model="@item" />
-			</div>
-		}
+	<div class="row mt-5" id="list">
+		<partial name="_ListPartial" model="@Model" />
 	</div>
 
 	<div class="row mt-6">
@@ -80,3 +75,24 @@
 	</div>
 </div>
 
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+	function loadPageAsync(event) {
+		event.preventDefault()
+
+		const url = this.attributes["href"].value
+
+		$('#list').load(url)
+
+		$('.active').removeClass('active disabled')
+		$(this).parent().addClass('active')
+
+		history.pushState(null, null, url)
+	}
+
+	$(document).ready(function () {
+		$('.page-link').click(loadPageAsync)
+	})
+</script>
