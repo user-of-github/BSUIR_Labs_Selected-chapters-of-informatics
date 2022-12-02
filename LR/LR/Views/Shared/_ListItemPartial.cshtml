@@ -1,0 +1,18 @@
+@{
+	var request = ViewContext.HttpContext.Request;
+	var returnUrl = request.Path + request.QueryString.ToUriComponent();
+	var domain = request.Host;
+}
+
+
+<article class="card">
+	<div class="card-body" style="text-align:center;">
+		<img src="https://@domain/@Model.ImagePath" style="height:333px; width:100%; object-fit: cover; border-radius: 5px;" />
+		<h1 class="card-title mt-2" style="font-size: 20px;">@Model.Title</h1>
+		<p class="card-text">@Model.Description</p>
+		<h3 class="card-subtitle badge">@Model.Duration</h3>
+		<a asp-action="Add" asp-controller="Cart" asp-route-id="@Model.Id" asp-route-returnUrl="@returnUrl" class="btn btn-outline-primary" style="width: 100%;">
+			<i class="fa fa-shopping-cart"></i> To Cart
+		</a>
+	</div>
+</article>

@@ -1,0 +1,160 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: 0.2s all !important;
+  --accent-main: #192a56;
+  --secondary: #f5f6fa;
+}
+
+* {
+  font-family: "Segoe UI Light", sans-serif;
+}
+
+html {
+  overflow-y: auto;
+}
+
+body {
+  width: 100%;
+}
+
+.header {
+  padding: 10px 0;
+  background-color: var(--accent-main);
+  color: var(--secondary);
+  width: 100%;
+}
+
+.nav-brand-header {
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.nav-link-header {
+  color: var(--secondary);
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.my-footer {
+  position: static;
+  background-color: #192a56;
+  color: var(--secondary);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.main {
+  width: 100%;
+  padding: 35px 15px;
+  color: var(--accent-main);
+}
+
+.footer-icons:first-child {
+  margin-left: auto;
+}
+
+.footer-icons {
+  margin-right: 20px;
+}
+
+.main-title {
+  font-weight: 400;
+  font-family: "Segoe UI", sans-serif;
+  color: var(--accent-main);
+}
+
+.secondary-title {
+  color: var(--accent-main);
+  font-weight: 400;
+  font-family: "Segoe UI", sans-serif;
+}
+
+hr {
+  opacity: 0.1;
+}
+
+.elements-list {
+  padding-left: 40px;
+}
+
+.dropdown-user-info {
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+  .dropdown-user-info span {
+    margin-bottom: 5px;
+  }
+
+.footer-links {
+  justify-content: right;
+  text-decoration: none;
+}
+
+  .footer-links a {
+    text-decoration: none;
+    text-transform: none;
+    color: white;
+  }
+
+
+.ACTIVE {
+  color: black !important;
+  background-color: white;
+}
+
+
+.form-floating {
+  margin: 10px 0;
+}
+
+
+.helloname {
+  font-weight: 900;
+  font-size: 18px;
+  display: block;
+  padding: 5px 10px;
+  background-color: white;
+  color: var(--accent-main);
+  margin-right: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-item.nav-link {
+  padding: 3px 15px;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  transition: 0.2s all;
+}
+
+.nav-item:first-child {
+  margin-left: 30px;
+}
+
+.nav-item.nav-link:not(:last-child) {
+  margin-right: 15px;
+}
+
+  .nav-item.nav-link:hover {
+    background-color: white;
+    color: black !important;
+  }
+
+  .nav-item.nav-link:active {
+    transform: scale(0.8);
+  }
+
+
+  .btn:active {
+    transform: scale(0.8);
+    transition: 0.2s all;
+  }

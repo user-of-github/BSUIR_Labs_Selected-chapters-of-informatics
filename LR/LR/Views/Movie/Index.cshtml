@@ -1,0 +1,98 @@
+@using LR.Entities
+@using LR.Models
+@model IEnumerable<LR.Entities.Movie>
+
+
+@{
+	ViewData["Title"] = "Movies List:";
+	var categories = ViewData["Categories"] as IEnumerable<Category>;
+	//Console.WriteLine("Vuew" + ViewData["CurrentCategory"]);
+	var currentGroup = (int)ViewData["CurrentCategory"];
+	var text = currentGroup != 0
+		? categories.FirstOrDefault(g => g.Id == currentGroup)?.Title
+		: "All";
+
+	var pageTotal = ListViewModel<Movie>.TotalPages;
+	var currentPage = ListViewModel<Movie>.CurrentPage;
+
+	var request = ViewContext.HttpContext.Request;
+	var returnUrl = request.Path + request.QueryString.ToUriComponent();
+	var domain = request.Host;
+}
+
+
+<div class="container">
+	<div class="row">
+		<h1>Movies List</h1>
+	</div>
+	<div class="row mt-3 mb-5">
+		<a asp-controller="Admin" asp-action="Create" class="btn btn-outline-primary" style=" width: auto; margin-right: auto;">Create New</a>
+	</div>
+	<div class="card-deck row">
+		<div class="col-2">
+			<div class="dropdown">
+				<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					@text
+				</a>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					@foreach (var cat in @categories)
+					{
+						@if (!(cat.Title == text))
+						{
+							<a class="dropdown-item" href="?group=@cat.Id">@cat.Title</a>
+						}
+					}
+					@if (text != "All")
+					{
+						<a class="dropdown-item" asp-action="Index" asp-controller="Movie">All</a>
+					}
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row mt-5" id="list">
+		<partial name="_ListPartial" model="@Model" />
+	</div>
+
+	<div class="row mt-6">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				@for (var page = 0; page < pageTotal; ++page)
+				{
+					<pager action="Index"
+					   controller="Movie"
+					   group-id="@currentGroup"
+					   page-total="@pageTotal"
+					   page-current="@(page + 1)">
+						@(page + 1)
+					</pager>
+				}
+
+			</ul>
+		</nav>
+	</div>
+</div>
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+	function loadPageAsync(event) {
+		event.preventDefault()
+
+		const url = this.attributes["href"].value
+
+		$('#list').load(url)
+
+		$('.active').removeClass('active disabled')
+		$(this).parent().addClass('active')
+
+		history.pushState(null, null, url)
+	}
+
+	$(document).ready(function () {
+		$('.page-link').click(loadPageAsync)
+	})
+</script>

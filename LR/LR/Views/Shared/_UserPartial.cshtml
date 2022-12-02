@@ -1,0 +1,25 @@
+﻿<div class="d-flex" role="search" style="align-items: center;">
+    @await Component.InvokeAsync("Cart")
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" style="background-color: white;" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+       <image img-action="GetImage" img-controller="LoadPicture" />
+      
+      </button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-user-info">
+                <span>user@mail.com</span>
+                <img src="@Url.Action("GetImage", "LoadPicture")" alt="Profile logo" width="16">
+            </li>
+            <li>
+                <a class="dropdown-item" asp-controller="Product" asp-action="UserProducts">My goods</a>
+            </li>
+            <li>
+              <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@ViewContext.HttpContext.Request.Path">
+                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">Log out</a>
+              </form>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+@page
+@model LR.Areas.Admin.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    var domain = ViewContext.HttpContext.Request.Host;
+}
+
+<div class="container">
+
+    <h1>Index</h1>
+
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie[0].Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie[0].Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie[0].Duration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie[0].ImagePath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie[0].MimeType)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Movie)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(i => item.Category.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(t => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(t => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(t => item.Duration)
+                    </td>
+                    <td>
+                      <img src="https://@domain/@item.ImagePath" style="height:50px; width: 100%; object-fit: cover; border-radius: 5px;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MimeType)
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-secondary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
+                        <a class="btn btn-outline-info" asp-page="./Details" asp-route-id="@item.Id">Details</a> 
+                        <a class="btn btn-outline-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
