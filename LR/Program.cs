@@ -14,6 +14,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Serilog;
+using Serilog.Settings;
+using Serilog.Settings.Configuration;
+using Serilog.Sinks.File;
+using Serilog.Expressions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,8 +65,11 @@ builder.Services.AddSession(opt =>
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<Cart>(sp => CartService.GetCart(sp));
 
+Log.Logger = new LoggerConfiguration().WriteTo.File("log.txt").CreateLogger();
+Log.Information($"{DateTime.Today} | APP STARTED");
 
 
+//builder.Logging.AddSerilog(_logger);
 
 var app = builder.Build();
 
