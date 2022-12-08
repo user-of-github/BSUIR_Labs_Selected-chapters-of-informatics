@@ -1,0 +1,27 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<EditForm Model="@_counter" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+        <ValidationSummary />
+    <input id="name" type="number" @bind-value="_counter.Number"/>
+
+    <button type="submit" class="btn btn-outline-primary">Set counter</button>
+</EditForm>
+
+<p role="status">Current count: @_number</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private CounterModel _counter = new();
+    private int _number = 0;
+
+    private void HandleValidSubmit()  => this._number = this._counter.Number;
+    
+    private void IncrementCount() => this._number = (++this._counter.Number);
+    
+}

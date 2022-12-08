@@ -69,8 +69,6 @@ Log.Logger = new LoggerConfiguration().WriteTo.File("log.txt").CreateLogger();
 Log.Information($"{DateTime.Today} | APP STARTED");
 
 
-//builder.Logging.AddSerilog(_logger);
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

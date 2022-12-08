@@ -1,0 +1,43 @@
+@using BlazorApp2.Shared
+
+
+<h3>Movies list</h3>
+@if (Movies != null)
+{
+	@foreach (DetailViewModel? movie in Movies.listWithMovies)
+	{
+		@if (movie.Id == selectedId)
+		{
+			<button type="button" class="list-group-item list-group-item-action active"
+		@onclick="@(e => Selected(e, movie.Id))">
+				@movie.Id - @movie.Title
+			</button>
+		}
+		else
+		{
+			<button type="button" class="list-group-item list-group-item-action"
+		@onclick="@(e=>Selected(e, movie.Id))">
+				@movie.Id - @movie.Title
+			</button>
+		}
+	}
+}
+
+@code {
+	private int? selectedId = null;
+
+	[Parameter]
+	public ListViewModel? Movies { get; set; }
+
+	[Parameter]
+	public EventCallback<int> SelectedIdChanged { get; set; }
+	[Parameter]
+	public EventCallback<ListViewModel?> MoviesChanged { get; set; }
+
+	private void Selected(MouseEventArgs e, int id)
+	{
+		Console.WriteLine("KEK0");
+		selectedId = id;
+		SelectedIdChanged.InvokeAsync(id);
+	}
+}

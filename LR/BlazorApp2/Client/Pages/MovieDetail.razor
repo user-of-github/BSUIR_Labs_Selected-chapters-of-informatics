@@ -1,0 +1,29 @@
+@using BlazorApp2.Shared
+
+@if (Movie != null) { 
+    <div class="row" style="margin-bottom:15px;">
+        <div class="card col-md-4">
+          <div class="card-body" style="text-align:center;">
+              <h2>@Movie.Title</h2>
+              <img src="@Movie.ImagePath" style="height:300px; width:210px;"/>
+            <p class="card-text">@Movie.Description</p>
+            <p class="card-title mt-6">@Movie.Duration</p>
+          </div>
+        </div>
+      </div>
+} else {
+  <div>No movie</div>
+}
+
+@code {
+    [Parameter]
+    public DetailViewModel? Movie { get; set; }
+
+    [Parameter]
+    public string HostAdress { get; set; }
+
+    [Parameter]
+    public EventCallback<DetailViewModel?> MovieChanged { get; set; }
+    [Parameter]
+    public EventCallback<string> HostAdressChanged { get; set; }
+}

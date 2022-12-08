@@ -1,0 +1,38 @@
+@page "/listofmovies"
+@using BlazorApp2.Shared
+@inject HttpClient client
+
+<div class="list-group">
+	<MoviesList @bind-Movies="movies" SelectedIdChanged="ShowDetails"></MoviesList>
+	<MovieDetail @bind-Movie="SelectedMovie" @bind-HostAdress="apiBaseAddress"></MovieDetail>
+</div>
+
+@code {
+	[Parameter]
+	public ListViewModel? movies { get; set; }
+
+	[Parameter]
+	public DetailViewModel? SelectedMovie { get; set; }
+
+	string apiBaseAddress = "https://localhost:7018";
+
+	protected override async Task OnInitializedAsync()
+	{
+		var resAdress = apiBaseAddress + "/api/Movies";
+		var response = await client.GetAsync(resAdress);
+		if (response.IsSuccessStatusCode)
+		{
+			movies = await client.GetFromJsonAsync<ListViewModel?>(resAdress);
+		}
+	}
+	private async Task ShowDetails(int id)
+	{
+		Console.WriteLine("KEK");
+
+		foreach (var movie in movies.listWithMovies) {
+			if (movie.Id == id) {
+				SelectedMovie = movie;
+			}
+		}
+	}
+}
